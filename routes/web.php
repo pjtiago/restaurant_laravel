@@ -19,7 +19,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
+
+    //Tables
+    Route::get('tables', ['as' => 'table.index', 'uses' => 'TablesController@index']);
+    Route::get('tables2', ['as' => 'table.store', 'uses' => 'TablesController@store']);
+
+    // User
+	Route::resource('user', 'UserController');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

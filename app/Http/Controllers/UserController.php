@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -57,11 +58,11 @@ class UserController extends Controller
     /**
      * Update the specified user in storage
      *
-     * @param  \App\Http\Requests\UserRequest  $request
-     * @param  User  $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param UserRequest $request
+     * @param User $user
+     * @return RedirectResponse
      */
-    public function update(UserRequest $request, User  $user)
+    public function update(UserRequest $request, User  $user): RedirectResponse
     {
         $user->update(
             $request->merge(['password' => Hash::make($request->get('password'))])
@@ -77,10 +78,15 @@ class UserController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User  $user)
+    public function destroy(User $user)
     {
         $user->delete();
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+    }
+
+    public function show(User $user)
+    {
+       return $user;
     }
 }

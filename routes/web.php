@@ -20,10 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    //Tables
-    Route::get('tables', ['as' => 'table.index', 'uses' => 'TablesController@index']);
-    Route::get('tables2', ['as' => 'table.store', 'uses' => 'TablesController@store']);
-
     // User
 	Route::resource('user', 'UserController');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

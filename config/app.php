@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::class
+        LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::class,
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
     ],
 
     /*
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Module' => Nwidart\Modules\Facades\Module::class,
     ],
 
 ];

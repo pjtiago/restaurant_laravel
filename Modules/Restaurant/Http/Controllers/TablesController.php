@@ -2,22 +2,56 @@
 
 namespace Modules\Restaurant\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Restaurant\Http\Models\Table;
+use Illuminate\Http\RedirectResponse;
 
 class TablesController extends Controller
 {
-    public function index()
+    public function index(Table $model)
     {
-        return view('restaurant::index');
+        //return 'Bnanana';
+        //var_dump($model);die;
+        return view('restaurant::tables.index',['tables' => $model->paginate(15)]);
     }
 
-    public function store(Table $model)
+    public function create()
     {
-        $model->create(['name' => '1', 'n_sits' => 10]);
+        //return 'Bnanana';
+        return view('restaurant::tables.create');
+    }
 
-        return "Test";
+    public function store(UserRequest $request,Table $model) : RedirectResponse
+    {
+        $model->create($request->All());
+
+        return redirect()->route('table.index')->withStatus(__('table successfully created.'));
+    }
+
+    public function edit(Table $table)
+    {
+        return view('table.edit', compact('table'));
+    }
+
+    public function update(UserRequest $request, Table  $table): RedirectResponse
+    {
+        $table->update($request->All());
+
+        return redirect()->route('table.index')->withStatus(__('table successfully updated.'));
+    }
+
+    public function destroy(Table $table) :RedirectResponse
+    {
+        $table->delete();
+
+        return redirect()->route('table.index')->withStatus(__('table successfully deleted.'));
+    }
+
+    public function show(User $user)
+    {
+        return $user;
     }
 }

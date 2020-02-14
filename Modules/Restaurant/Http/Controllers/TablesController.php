@@ -11,7 +11,7 @@ class TablesController extends Controller
 {
     public function index()
     {
-        return view('restaurant::index');
+        return view('restaurant::tables/index');
     }
 
     public function store(Table $model)

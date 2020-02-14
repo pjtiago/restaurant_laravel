@@ -13,8 +13,14 @@
 
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('restaurant')->group(function () {
-        Route::get('/', 'TablesController@index');
 
-        Route::get('/store', 'TablesController@store');
+        Route::get('/tables', 'TablesController@index');
+        Route::get('/tables/store', 'TablesController@store');
+
+        Route::prefix('reservations')->group(function () {
+            Route::get('/', ['as' => 'reservations.index', 'uses' => 'ReservationsController@index']);
+            Route::get('/create', 'ReservationsController@create');
+            Route::post('/store', ['as' => 'reservations.store', 'uses' => 'ReservationsController@store']);
+        });
     });
 });

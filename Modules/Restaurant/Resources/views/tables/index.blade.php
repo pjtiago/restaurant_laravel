@@ -77,4 +77,3 @@
 
         @include('layouts.footers.auth')
     </div>
-@endsection

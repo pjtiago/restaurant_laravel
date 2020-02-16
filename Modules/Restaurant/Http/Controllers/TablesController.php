@@ -13,14 +13,11 @@ class TablesController extends Controller
 {
     public function index(Table $model)
     {
-        //return 'Bnanana';
-        //var_dump($model);die;
         return view('restaurant::tables.index',['tables' => $model->paginate(15)]);
     }
 
     public function create()
     {
-        //return 'Bnanana';
         return view('restaurant::tables.create');
     }
 

@@ -14,8 +14,17 @@ class RestaurantDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        //Model::unguard();
 
         // $this->call("OthersTableSeeder");
+        $i= 0;
+        do{
+            DB::table('tables')->insert([
+                'name' => "mesa $i",
+                'n_sits' => '2',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }while($i < 20);
     }
 }

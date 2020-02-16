@@ -12,15 +12,12 @@
 */
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::prefix('restaurant')->group(function () {
-
-        Route::get('/tables', 'TablesController@index');
-        Route::get('/tables/store', 'TablesController@store');
-
-        Route::prefix('reservations')->group(function () {
-            Route::get('/', ['as' => 'reservations.index', 'uses' => 'ReservationsController@index']);
-            Route::get('/create', 'ReservationsController@create');
-            Route::post('/store', ['as' => 'reservations.store', 'uses' => 'ReservationsController@store']);
-        });
+    Route::prefix('restaurant/tables')->group(function () {
+        Route::get('/', ["as" => "restaurant.tables.index", "uses"=>'TablesController@index']);
+        Route::get('/edit?{id}', ["as" => "restaurant.tables.edit", "uses"=>'TablesController@edit']);
+        Route::get('/create', ["as" => "restaurant.tables.create", "uses"=>'TablesController@create']);
+        Route::put('/update', ["as" => "restaurant.tables.update", "uses"=>'TablesController@update']);
+        Route::get('/store', ["as" => "restaurant.tables.store", "uses"=>'TablesController@store']);
+        Route::get('/destroy', ["as" => "restaurant.tables.destroy", "uses"=>'TablesController@destroy']);
     });
 });

@@ -72,12 +72,6 @@ class UserController extends Controller
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
 
-    /**
-     * Remove the specified user from storage
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(User $user)
     {
         $user->delete();

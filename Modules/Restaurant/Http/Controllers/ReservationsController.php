@@ -13,6 +13,11 @@ use Modules\Restaurant\Http\Requests\Reservations\UpdateRequest;
 
 class ReservationsController extends Controller
 {
+    public function test()
+    {
+        return view('restaurant::client_template.index');
+    }
+
     public function index(Reservation $model)
     {
         return view('restaurant::reservations.index', ['reservations' => $model->paginate(15)]);

@@ -15,6 +15,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('restaurant')->group(function () {
 
         Route::prefix('reservation')->group(function () {
+            Route::get('/test', ['as' => 'reservation.test', 'uses' => 'ReservationsController@test']);
+
             Route::get('/', ['as' => 'reservation.index', 'uses' => 'ReservationsController@index']);
             Route::get('/create', ['as' => 'reservation.create', 'uses' => 'ReservationsController@create']);
             Route::post('/store', ['as' => 'reservation.store', 'uses' => 'ReservationsController@store']);

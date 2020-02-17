@@ -1,5 +1,14 @@
 @extends('layouts.app', ['title' => __('Create Reservation')])
 
+@section('custom_scripts')
+    <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $( ".datepicker" ).datepicker();
+        });
+    </script>
+@endsection
+
 @section('content')
     @include('users.partials.header', ['title' => __('Add User')])
 
@@ -52,6 +61,16 @@
                                             <strong>{{ $errors->first('phone') }}</strong>
                                         </span>
                                     @endif
+                                </div>
+
+                                <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input class="form-control datepicker" id="input-start-date-picker" placeholder="Select date" type="text" value="06/20/2020">
+                                    </div>
                                 </div>
 
                                 <div class="text-center">

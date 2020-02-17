@@ -38,7 +38,6 @@
                                 <th scope="col">{{ __('Name') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
                                 <th scope="col">{{ __('Phone') }}</th>
-                                <th scope="col">{{ __('Phone') }}</th>
                                 <th scope="col">{{ __('Start Date') }}</th>
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th scope="col">{{ __('Confirmed') }}</th>
@@ -54,9 +53,25 @@
                                     <td>{{ $reservation->email }}</td>
                                     <td>{{ $reservation->phone }}</td>
                                     <td>{{ $reservation->start_date }}</td>
-                                    <td>{{ $reservation->status }}</td>
-                                    <td>{{ $reservation->confirmed }}</td>
-                                    <td>{{ $reservation->executed }}</td>
+                                    <td>
+                                        @if ($reservation->status === 'Pending')
+                                            <span class="badge badge-danger">{{ __('Pending') }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($reservation->confirmed)
+                                            <span class="badge badge-success">{{ __('Yes') }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ __('No') }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($reservation->executed)
+                                            <span class="badge badge-success">{{ __('Yes') }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ __('No') }}</span>
+                                        @endif
+                                    </td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"

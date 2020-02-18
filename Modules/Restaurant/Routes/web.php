@@ -11,6 +11,12 @@
 |
 */
 
+
+Route::get('/', ['as' => 'restaurant.index', 'uses' => 'RestaurantController@index']);
+Route::get('/about', ['as' => 'restaurant.about', 'uses' => 'RestaurantController@about']);
+Route::get('/menu', ['as' => 'restaurant.menu', 'uses' => 'RestaurantController@menu']);
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('restaurant')->group(function () {
 

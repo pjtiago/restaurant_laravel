@@ -410,7 +410,7 @@ var Popover = (function() {
 
 		var options = {
 			trigger: 'focus',
-			template: '<div class="popover ' + $popoverClass + '" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+			template: '<div class="popover ' + $popoverClass + '" role="tooltip"><div class="arrow"></div><h3 class="popover-headers"></h3><div class="popover-body"></div></div>'
 		};
 
 		$this.popover(options);
@@ -627,9 +627,9 @@ var Charts = (function() {
 								// Add arrow
 								html += '<div class="arrow"></div>';
 
-								// Add header
+								// Add headers
 								titleLines.forEach(function(title) {
-									html += '<h3 class="popover-header text-center">' + title + '</h3>';
+									html += '<h3 class="popover-headers text-center">' + title + '</h3>';
 								});
 
 								// Add body
@@ -955,7 +955,7 @@ var OrdersChart = (function() {
 							}
 
 							content += '<span class="popover-body-value">' + yLabel + '</span>';
-							
+
 							return content;
 						}
 					}

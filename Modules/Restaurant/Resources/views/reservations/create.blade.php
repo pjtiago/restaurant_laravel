@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Add User')])
+    @include('users.partials.headers', ['title' => __('Add User')])
 
     <div class="container-fluid mt--7">
         <div class="row">

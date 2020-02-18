@@ -20,4 +20,21 @@ class RestaurantController extends Controller
     {
         return view('restaurant::client_template.menu');
     }
+
+    public function blog()
+    {
+        return view('restaurant::client_template.blog');
+    }
+    public function blogSingle()
+    {
+        return view('restaurant::client_template.blog-single');
+    }
+    public function contact()
+    {
+        return view('restaurant::client_template.contact');
+    }
+    public function reservation()
+    {
+        return view('restaurant::client_template.reservation');
+    }
 }

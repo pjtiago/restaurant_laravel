@@ -15,7 +15,10 @@
 Route::get('/', ['as' => 'restaurant.index', 'uses' => 'RestaurantController@index']);
 Route::get('/about', ['as' => 'restaurant.about', 'uses' => 'RestaurantController@about']);
 Route::get('/menu', ['as' => 'restaurant.menu', 'uses' => 'RestaurantController@menu']);
-
+Route::get('/blog', ['as' => 'restaurant.blog', 'uses' => 'RestaurantController@blog']);
+Route::get('/blog-single', ['as' => 'restaurant.blog-single', 'uses' => 'RestaurantController@blogSingle']);
+Route::get('/contact', ['as' => 'restaurant.contact', 'uses' => 'RestaurantController@contact']);
+Route::get('/reservation', ['as' => 'restaurant.reservation', 'uses' => 'RestaurantController@reservation']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('restaurant')->group(function () {

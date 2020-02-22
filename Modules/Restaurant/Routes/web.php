@@ -11,6 +11,19 @@
 |
 */
 
+// define patterns
+use Modules\Restaurant\Http\Models\Category;
+use Modules\Restaurant\Http\Models\Reservation;
+use Modules\Restaurant\Http\Models\Table;
+
+Route::pattern('category', '[0-9]+');
+Route::pattern('reservation', '[0-9]+');
+Route::pattern('table', '[0-9]+');
+
+// define models
+Route::model('category', Category::class);
+Route::model('reservation', Reservation::class);
+Route::model('table', Table::class);
 
 Route::get('/', ['as' => 'restaurant.index', 'uses' => 'RestaurantController@index']);
 Route::get('/about', ['as' => 'restaurant.about', 'uses' => 'RestaurantController@about']);
@@ -21,25 +34,34 @@ Route::get('/contact', ['as' => 'restaurant.contact', 'uses' => 'RestaurantContr
 Route::get('/reservation', ['as' => 'restaurant.reservation', 'uses' => 'RestaurantController@reservation']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::prefix('restaurant')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::prefix('restaurant')->group(function () {
 
-        Route::prefix('reservation')->group(function () {
-            Route::get('/test', ['as' => 'reservation.test', 'uses' => 'ReservationsController@test']);
+            Route::prefix('category')->group(function () {
+                Route::get('/', ['as' => 'restaurant.category.index', 'uses' => 'CategoriesController@index']);
+                Route::get('/create', ['as' => 'restaurant.category.create', 'uses' => 'CategoriesController@create']);
+                Route::delete('{category}', ['as' => 'restaurant.category.destroy', 'uses' => 'CategoriesController@destroy']);
+                Route::get('{category}/edit', ['as' => 'restaurant.category.edit', 'uses' => 'CategoriesController@edit']);
+            });
 
-            Route::get('/', ['as' => 'reservation.index', 'uses' => 'ReservationsController@index']);
-            Route::get('/create', ['as' => 'reservation.create', 'uses' => 'ReservationsController@create']);
-            Route::post('/store', ['as' => 'reservation.store', 'uses' => 'ReservationsController@store']);
-            Route::delete('{reservation}', ['as' => 'reservation.destroy', 'uses' => 'ReservationsController@destroy']);
-            Route::get('{reservation}/edit', ['as' => 'reservation.edit', 'uses' => 'ReservationsController@edit']);
-            Route::put('{reservation}', ['as' => 'reservation.update', 'uses' => 'ReservationsController@update']);
-        });
-        Route::prefix('tables')->group(function () {
-            Route::get('/', ["as" => "restaurant.tables.index", "uses" => 'TablesController@index']);
-            Route::get('/edit?{id}', ["as" => "restaurant.tables.edit", "uses" => 'TablesController@edit']);
-            Route::get('/create', ["as" => "restaurant.tables.create", "uses" => 'TablesController@create']);
-            Route::put('/update', ["as" => "restaurant.tables.update", "uses" => 'TablesController@update']);
-            Route::get('/store', ["as" => "restaurant.tables.store", "uses" => 'TablesController@store']);
-            Route::get('/destroy', ["as" => "restaurant.tables.destroy", "uses" => 'TablesController@destroy']);
+            Route::prefix('reservation')->group(function () {
+                Route::get('/', ['as' => 'restaurant.reservation.index', 'uses' => 'ReservationsController@index']);
+                Route::post('/', ['as' => 'restaurant.reservation.store', 'uses' => 'ReservationsController@store']);
+                Route::get('/create', ['as' => 'restaurant.reservation.create', 'uses' => 'ReservationsController@create']);
+                Route::put('{reservation}', ['as' => 'restaurant.reservation.update', 'uses' => 'ReservationsController@update']);
+                Route::delete('{reservation}', ['as' => 'restaurant.reservation.destroy', 'uses' => 'ReservationsController@destroy']);
+                Route::get('{reservation}/edit', ['as' => 'restaurant.reservation.edit', 'uses' => 'ReservationsController@edit']);
+
+            });
+            Route::prefix('table')->group(function () {
+                Route::get('/', ["as" => "restaurant.table.index", "uses" => 'TablesController@index']);
+                Route::post('/', ["as" => "restaurant.table.store", "uses" => 'TablesController@store']);
+                Route::get('/create', ["as" => "restaurant.table.create", "uses" => 'TablesController@create']);
+                Route::put('{table}', ["as" => "restaurant.table.update", "uses" => 'TablesController@update']);
+                Route::delete('{table}', ["as" => "restaurant.table.destroy", "uses" => 'TablesController@destroy']);
+                Route::get('{table}/edit', ["as" => "restaurant.table.edit", "uses" => 'TablesController@edit']);
+            });
+
         });
     });
 });

@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    @include('users.partials.headers', ['title' => __('Edit Reservation')])
+    @include('users.components.headers', ['title' => __('Edit Reservation')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -22,12 +22,12 @@
                                 <h3 class="mb-0">{{ __('Edit Reservation') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('reservation.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ route('restaurant.reservation.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('reservation.update', $reservation) }}" autocomplete="off">
+                        <form method="post" action="{{ route('restaurant.reservation.update', $reservation) }}" autocomplete="off">
                             @csrf
                             @method('put')
 

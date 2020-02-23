@@ -3,7 +3,7 @@
 @section('content')
     @include('layouts.headers.cards')
 
-    @component('components.table')
+    @component('components.tables.table')
         @slot('title'){{ __('Categories') }}@endslot
 
         @slot('createRoute')
@@ -23,7 +23,7 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
 
-                    @component('components.table-actions')
+                    @component('components.tables.table-actions')
                         @slot('destroyRoute')
                             {{ route('restaurant.category.destroy', $category)}}
                         @endslot

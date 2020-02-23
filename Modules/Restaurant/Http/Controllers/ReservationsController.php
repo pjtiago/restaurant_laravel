@@ -27,7 +27,7 @@ class ReservationsController extends Controller
     {
         $model->create($request->merge(['start_date' => new \DateTimeImmutable('now')])->all());
 
-        return redirect()->route('reservation.index')->withStatus(__('Reservation successfully created.'));
+        return redirect()->route('restaurant.reservation.index')->withStatus(__('Reservation successfully created.'));
     }
 
     public function edit(Reservation $reservation)
@@ -41,7 +41,7 @@ class ReservationsController extends Controller
             $request->merge(['start_date' => new \DateTimeImmutable('now')])->all()
         );
 
-        return redirect()->route('reservation.index')->withStatus(__('Reservation successfully updated.'));
+        return redirect()->route('restaurant.reservation.index')->withStatus(__('Reservation successfully updated.'));
     }
 
     public function destroy($id): RedirectResponse
@@ -50,6 +50,6 @@ class ReservationsController extends Controller
 
         $reservation->delete();
 
-        return redirect()->route('reservation.index')->withStatus(__('Reservation successfully deleted.'));
+        return redirect()->route('restaurant.reservation.index')->withStatus(__('Reservation successfully deleted.'));
     }
 }

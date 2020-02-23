@@ -12,10 +12,36 @@
 @section('content')
     @include('users.partials.header', ['title' => __('Add User')])
 
-    @component('components.form')
+    @component('components.forms.form')
         @slot('title'){{ __('Create Reservation') }}@endslot
         @slot('subTitle'){{__('Reservation information')}}@endslot
         @slot('backLink'){{route('restaurant.reservation.index')}}@endslot
         @slot('formEndpoint'){{route('restaurant.reservation.store')}}@endslot
+        @slot('formFields')
+            @component('components.forms.input-text',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
+                @slot('name'){{ __('Name') }}@endslot
+                @slot('oldValue'){{old('name')}}@endslot
+            @endcomponent
+
+            @component('components.forms.input-text',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
+                @slot('name'){{ __('Email') }}@endslot
+                @slot('oldValue'){{old('name')}}@endslot
+            @endcomponent
+
+            @component('components.forms.input-text', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
+                @slot('name'){{ __('phone') }}@endslot
+                @slot('oldValue'){{old('phone')}}@endslot
+            @endcomponent
+
+            <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
+                <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <input class="form-control datepicker" id="input-start-date-picker" placeholder="Select date" type="text" value="06/20/2020">
+                </div>
+            </div>
+        @endslot
     @endcomponent
 @endsection

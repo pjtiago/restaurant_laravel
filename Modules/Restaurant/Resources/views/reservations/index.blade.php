@@ -3,7 +3,7 @@
 @section('content')
     @include('layouts.headers.cards')
 
-    @component('components.table')
+    @component('components.tables.table')
         @slot('title'){{ __('Reservations') }}@endslot
 
         @slot('createRoute')
@@ -51,7 +51,7 @@
                         @endif
                     </td>
 
-                    @component('components.table-actions')
+                    @component('components.tables.table-actions')
                         @slot('destroyRoute')
                             {{ route('restaurant.reservation.destroy', $reservation)}}
                         @endslot

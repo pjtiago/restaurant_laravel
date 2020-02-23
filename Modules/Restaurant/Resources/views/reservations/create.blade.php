@@ -12,7 +12,7 @@
 @section('content')
     @include('users.partials.header', ['title' => __('Add User')])
 
-    @component('components.forms.form')
+    @component('components.forms.form', ['formAction' => 'post'])
         @slot('title'){{ __('Create Reservation') }}@endslot
         @slot('subTitle'){{__('Reservation information')}}@endslot
         @slot('backLink'){{route('restaurant.reservation.index')}}@endslot
@@ -25,7 +25,7 @@
 
             @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
                 @slot('name'){{ __('Email') }}@endslot
-                @slot('oldValue'){{old('name')}}@endslot
+                @slot('oldValue'){{old('email')}}@endslot
             @endcomponent
 
             @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])

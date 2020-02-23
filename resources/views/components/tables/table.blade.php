@@ -28,17 +28,35 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
-                            {{ $columns }}
+                            @foreach ($columnsValues as $value)
+                                <td>{{ __($value) }}</td>
+                            @endforeach
+                                <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
-                            {{ $tableBody }}
+                            @foreach ($rows as $row)
+                                <tr>
+                                    @foreach ($columnsValues as $value)
+                                        <td>{{ $row->$value }}</td>
+                                    @endforeach
+                                    @component('components.tables.table-actions')
+                                        @slot('destroyRoute')
+                                            {{ route($baseRoute . '.destroy', $row)}}
+                                        @endslot
+
+                                        @slot('editRoute')
+                                            {{ route($baseRoute . '.edit', $row) }}
+                                        @endslot
+                                    @endcomponent
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
-                        {{ $tablePagination }}
+                        {{ $rows->links() }}
                     </nav>
                 </div>
             </div>

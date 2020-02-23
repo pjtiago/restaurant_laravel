@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Edit Reservation')])
+@extends('layouts.app', ['title' => __('Create Reservation')])
 
 @section('custom_scripts')
     <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
@@ -10,80 +10,38 @@
 @endsection
 
 @section('content')
-    @include('users.components.headers', ['title' => __('Edit Reservation')])
+    @include('users.partials.header', ['title' => __('Add User')])
 
-    <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-12 order-xl-1">
-                <div class="card bg-secondary shadow">
-                    <div class="card-header bg-white border-0">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">{{ __('Edit Reservation') }}</h3>
-                            </div>
-                            <div class="col-4 text-right">
-                                <a href="{{ route('restaurant.reservation.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
-                            </div>
-                        </div>
+    @component('components.forms.form', ['formAction' => 'put'])
+        @slot('title'){{ __('Create Reservation') }}@endslot
+        @slot('subTitle'){{__('Reservation information')}}@endslot
+        @slot('backLink'){{route('restaurant.reservation.index')}}@endslot
+        @slot('formEndpoint'){{ route('restaurant.reservation.update', $reservation) }}@endslot
+        @slot('formFields')
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
+                @slot('name'){{ __('Name') }}@endslot
+                @slot('oldValue'){{old('name', $reservation->name)}}@endslot
+            @endcomponent
+
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
+                @slot('name'){{ __('Email') }}@endslot
+                @slot('oldValue'){{old('email', $reservation->email)}}@endslot
+            @endcomponent
+
+            @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
+                @slot('name'){{ __('phone') }}@endslot
+                @slot('oldValue'){{old('phone', $reservation->phone)}}@endslot
+            @endcomponent
+
+            <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
+                <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                     </div>
-                    <div class="card-body">
-                        <form method="post" action="{{ route('restaurant.reservation.update', $reservation) }}" autocomplete="off">
-                            @csrf
-                            @method('put')
-
-                            <h6 class="heading-small text-muted mb-4">{{ __('Reservation information') }}</h6>
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $reservation->name) }}" required autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', $reservation->email) }}" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-phone">{{ __('Phone') }}</label>
-                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone') }}" value="{{ old('phone', $reservation->phone) }}" required>
-
-                                    @if ($errors->has('phone'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('phone') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
-                                    <div class="input-group input-group-alternative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                        </div>
-                                        <input class="form-control datepicker" id="input-start-date-picker" placeholder="Select date" type="text" value="06/20/2020">
-                                    </div>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <input class="form-control datepicker" id="input-start-date-picker" placeholder="Select date" type="text" value="06/20/2020">
                 </div>
             </div>
-        </div>
-
-        @include('layouts.footers.auth')
-    </div>
+        @endslot
+    @endcomponent
 @endsection

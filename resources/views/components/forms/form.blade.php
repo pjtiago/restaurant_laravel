@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <form method="post" action="{{ $formEndpoint }}" autocomplete="off">
                         @csrf
-
+                        @method($formAction)
                         <h6 class="heading-small text-muted mb-4">{{$subTitle}}</h6>
                         <div class="pl-lg-4">
                             {{$formFields}}

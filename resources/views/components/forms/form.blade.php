@@ -8,7 +8,7 @@
                             <h3 class="mb-0">{{$title}}</h3>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{$backLink}}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                            <a href="{{$backLink}}" class="btn btn-sm btn-primary">{{ __('lang.back_to_list') }}</a>
                         </div>
                     </div>
                 </div>
@@ -20,9 +20,8 @@
                         <div class="pl-lg-4">
                             {{$formFields}}
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                                <button type="submit" class="btn btn-success mt-4">{{ __('lang.save') }}</button>
                             </div>
-
                         </div>
                     </form>
                 </div>

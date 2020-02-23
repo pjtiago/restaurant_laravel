@@ -11,10 +11,10 @@
                 @method('delete')
 
                 <a class="dropdown-item"
-                   href="{{$editRoute}}">{{ __('Edit') }}</a>
+                   href="{{$editRoute}}">{{ __('lang.edit') }}</a>
                 <button type="button" class="dropdown-item"
-                        onclick="confirm('{{ __("Are you sure you want to delete this record?") }}') ? this.parentElement.submit() : ''">
-                    {{ __('Delete') }}
+                        onclick="confirm('{{ __("lang.delete_message_confirmation") }}') ? this.parentElement.submit() : ''">
+                    {{ __('lang.delete') }}
                 </button>
             </form>
         </div>

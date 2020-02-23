@@ -4,7 +4,7 @@
     <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script>
         $(document).ready(function() {
-            $( ".datepicker" ).datepicker();
+            $(".datepicker").datepicker();
         });
     </script>
 @endsection
@@ -24,7 +24,7 @@
             @endcomponent
 
             @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
-                @slot('name'){{ __('Email') }}@endslot
+                @slot('name'){{ __('restaurant::lang.email') }}@endslot
                 @slot('oldValue'){{old('email', $reservation->email)}}@endslot
             @endcomponent
 
@@ -34,7 +34,7 @@
             @endcomponent
 
             <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
-                <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
+                <label class="form-control-label" for="input-start-date-picker">{{ __('restaurant::lang.start_date') }}</label>
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>

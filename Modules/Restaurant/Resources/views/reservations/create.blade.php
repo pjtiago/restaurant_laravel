@@ -18,17 +18,17 @@
         @slot('backLink'){{route('restaurant.reservation.index')}}@endslot
         @slot('formEndpoint'){{route('restaurant.reservation.store')}}@endslot
         @slot('formFields')
-            @component('components.forms.input-text',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
                 @slot('name'){{ __('Name') }}@endslot
                 @slot('oldValue'){{old('name')}}@endslot
             @endcomponent
 
-            @component('components.forms.input-text',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
                 @slot('name'){{ __('Email') }}@endslot
                 @slot('oldValue'){{old('name')}}@endslot
             @endcomponent
 
-            @component('components.forms.input-text', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
+            @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
                 @slot('name'){{ __('phone') }}@endslot
                 @slot('oldValue'){{old('phone')}}@endslot
             @endcomponent

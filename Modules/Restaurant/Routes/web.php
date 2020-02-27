@@ -22,7 +22,7 @@ Route::pattern('table', '[0-9]+');
 
 // define models
 Route::model('category', Category::class);
-Route::model('reservation', Reservation::class);LANG_SHOP_SART_DATE
+Route::model('reservation', Reservation::class);
 Route::model('table', Table::class);
 
 Route::get('/', ['as' => 'restaurant.index', 'uses' => 'RestaurantController@index']);

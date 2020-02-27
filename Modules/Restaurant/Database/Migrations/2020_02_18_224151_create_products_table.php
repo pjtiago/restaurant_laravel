@@ -16,13 +16,17 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description');
             $table->float('price');
-            $table->string('image_url');
-            $table->boolean('visible')->default(1);
+            $table->string('photo');
             $table->unsignedBigInteger('fk_category_id');
+            $table->unsignedBigInteger('fk_visible')->default(1);
+            $table->unsignedBigInteger('fk_highlight')->default(2);
             $table->timestamps();
 
             $table->foreign('fk_category_id')->references('id')->on('categories');
+            $table->foreign('fk_visible')->references('id')->on('boolean_options');
+            $table->foreign('fk_highlight')->references('id')->on('boolean_options');
         });
     }
 

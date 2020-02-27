@@ -11,6 +11,7 @@ class SeedCategoriesTable extends CustomMigration
             [
                 'id' => 1,
                 'name' => 'Breakfast',
+                'description' => 'Breakfast description',
             ]
         ];
 

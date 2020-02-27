@@ -28,29 +28,11 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
-                            @foreach ($columnsValues as $value)
-                                <td>{{ __($value) }}</td>
-                            @endforeach
-                                <th scope="col"></th>
+                            {{$columns}}
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($rows as $row)
-                                <tr>
-                                    @foreach ($columnsValues as $value)
-                                        <td>{{ $row->$value }}</td>
-                                    @endforeach
-                                    @component('components.tables.table-actions')
-                                        @slot('destroyRoute')
-                                            {{ route($baseRoute . '.destroy', $row)}}
-                                        @endslot
-
-                                        @slot('editRoute')
-                                            {{ route($baseRoute . '.edit', $row) }}
-                                        @endslot
-                                    @endcomponent
-                                </tr>
-                            @endforeach
+                        {{$columnsValues}}
                         </tbody>
                     </table>
                 </div>

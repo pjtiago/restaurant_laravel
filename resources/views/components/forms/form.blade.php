@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ $formEndpoint }}" autocomplete="off" {{$additionalFormOptions}}>
+                    <form method="post" action="{{ $formEndpoint }}" autocomplete="off" {{$additionalFormOptions ?? ''}}>
                         @csrf
                         @method($formAction)
                         <h6 class="heading-small text-muted mb-4">{{$subTitle}}</h6>

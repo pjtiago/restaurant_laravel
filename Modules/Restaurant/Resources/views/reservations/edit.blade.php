@@ -10,16 +10,16 @@
 @endsection
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Add User')])
+    @include('users.partials.header', ['title' => __('restaurant::lang.add_user')])
 
     @component('components.forms.form', ['formAction' => 'put'])
-        @slot('title'){{ __('Create Reservation') }}@endslot
-        @slot('subTitle'){{__('Reservation information')}}@endslot
+        @slot('title'){{ __('restaurant::lang.create_reservation') }}@endslot
+        @slot('subTitle'){{__('restaurant::lang.reservation_information')}}@endslot
         @slot('backLink'){{route('restaurant.reservation.index')}}@endslot
         @slot('formEndpoint'){{ route('restaurant.reservation.update', $reservation) }}@endslot
         @slot('formFields')
             @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
-                @slot('name'){{ __('Name') }}@endslot
+                @slot('name'){{ __('restaurant::lang.name') }}@endslot
                 @slot('oldValue'){{old('name', $reservation->name)}}@endslot
             @endcomponent
 
@@ -29,7 +29,7 @@
             @endcomponent
 
             @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
-                @slot('name'){{ __('phone') }}@endslot
+                @slot('name'){{ __('restaurant::lang.phone') }}@endslot
                 @slot('oldValue'){{old('phone', $reservation->phone)}}@endslot
             @endcomponent
 

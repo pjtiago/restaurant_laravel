@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::prefix('category')->group(function () {
                 Route::get('/', ['as' => 'restaurant.category.index', 'uses' => 'CategoriesController@index']);
+                Route::post('/', ['as' => 'restaurant.category.store', 'uses' => 'CategoriesController@store']);
                 Route::get('/create', ['as' => 'restaurant.category.create', 'uses' => 'CategoriesController@create']);
                 Route::delete('{category}', ['as' => 'restaurant.category.destroy', 'uses' => 'CategoriesController@destroy']);
                 Route::get('{category}/edit', ['as' => 'restaurant.category.edit', 'uses' => 'CategoriesController@edit']);

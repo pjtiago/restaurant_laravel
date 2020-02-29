@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->float('price');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('fk_category_id');
             $table->unsignedBigInteger('fk_visible')->default(1);
             $table->unsignedBigInteger('fk_highlight')->default(2);

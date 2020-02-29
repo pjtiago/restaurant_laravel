@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Create Reservation')])
+@extends('layouts.app', ['title' => __('restaurant::lang.create_category')])
 
 @section('custom_scripts').
     <script>
@@ -12,15 +12,18 @@
     @include('users.partials.header', ['title' => __('Add User')])
 
     @component('components.forms.form', ['formAction' => 'post'])
-        @slot('title'){{ __('Create Category') }}@endslot
-        @slot('subTitle'){{__('Category information')}}@endslot
+        @slot('title'){{ __('restaurant::lang.create_category') }}@endslot
+        @slot('subTitle'){{ __('restaurant::lang.category_information') }}@endslot
         @slot('backLink'){{route('restaurant.category.index')}}@endslot
         @slot('formEndpoint'){{route('restaurant.category.store')}}@endslot
-        @slot('additionalFormOptions')enctype="multipart/form-data"@endslot
         @slot('formFields')
-            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
-                @slot('name'){{ __('name') }}@endslot
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text', 'additionalOptions' => ['required', 'autofocus']])
+                @slot('name'){{ __('restaurant::lang.name') }}@endslot
                 @slot('oldValue'){{old('name')}}@endslot
+            @endcomponent
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'description', 'type' => 'text', 'additionalOptions' => ['required', 'autofocus']])
+                @slot('name'){{ __('restaurant::lang.description') }}@endslot
+                @slot('oldValue'){{old('description')}}@endslot
             @endcomponent
         @endslot
     @endcomponent

@@ -21,11 +21,15 @@ return [
     'categories' => 'Categories',
     'categories_management' => 'Categories Management',
     'add_category' => 'Add category',
+    'create_category' => 'Create category',
+    'category_information' => 'Category information',
 
     //Products
     'products' => 'Products',
     'products_management' => 'Products Management',
     'add_product' => 'Add product',
+    'create_product' => 'Create product',
+    'product_information' => 'Product information',
 
     //Reservation
     'reservation_information' => 'Reservation information',

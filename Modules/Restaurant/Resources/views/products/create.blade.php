@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Create Reservation')])
+@extends('layouts.app', ['title' => __('restaurant::lang.create_product')])
 
 @section('custom_scripts').
     <script>
@@ -12,16 +12,43 @@
     @include('users.partials.header', ['title' => __('Add User')])
 
     @component('components.forms.form', ['formAction' => 'post'])
-        @slot('title'){{ __('Create Category') }}@endslot
-        @slot('subTitle'){{__('Category information')}}@endslot
-        @slot('backLink'){{route('restaurant.category.index')}}@endslot
-        @slot('formEndpoint'){{route('restaurant.category.store')}}@endslot
+        @slot('title'){{ __('restaurant::lang.create_product') }}@endslot
+        @slot('subTitle'){{ __('restaurant::lang.product_information') }}@endslot
+        @slot('backLink'){{route('restaurant.product.index')}}@endslot
+        @slot('formEndpoint'){{route('restaurant.product.store')}}@endslot
         @slot('additionalFormOptions')enctype="multipart/form-data"@endslot
         @slot('formFields')
-            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
-                @slot('name'){{ __('name') }}@endslot
+            @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'name', 'type' => 'text', 'additionalOptions' => ['required', 'autofocus']])
+                @slot('name'){{ __('restaurant::lang.name') }}@endslot
                 @slot('oldValue'){{old('name')}}@endslot
             @endcomponent
+            @component('components.forms.text-area',['rows' => '3','errors' => $errors, 'fieldName' => 'description', 'type' => 'text'])
+                @slot('name'){{ __('restaurant::lang.description') }}@endslot
+                @slot('oldValue'){{old('description')}}@endslot
+            @endcomponent
+            @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'price', 'type' => 'number', 'additionalOptions' => ['required', 'autofocus']])
+                @slot('name'){{ __('restaurant::lang.price') }}@endslot
+                @slot('oldValue'){{old('price')}}@endslot
+            @endcomponent
+            @component('components.forms.upload-file-field',['errors' => $errors, 'fieldName' => 'photo'])
+                @slot('name'){{ __('restaurant::lang.photo') }}@endslot
+            @endcomponent
+
+            @component('components.forms.select',['errors' => $errors, 'fieldName' => 'fk_category_id', 'options' => $categories])
+                @slot('name'){{ __('restaurant::lang.category') }}@endslot
+            @endcomponent
+            <div class="row">
+                <div class="col-md-6">
+                    @component('components.forms.radio',['errors' => $errors, 'fieldName' => 'fk_visible', 'options' => $boolean_options])
+                        @slot('name'){{ __('restaurant::lang.visible') }}@endslot
+                    @endcomponent
+                </div>
+                <div class="col-md-6">
+                    @component('components.forms.radio',['errors' => $errors, 'fieldName' => 'fk_highlight', 'options' => $boolean_options])
+                        @slot('name'){{ __('restaurant::lang.highlight') }}@endslot
+                    @endcomponent
+                </div>
+            </div>
         @endslot
     @endcomponent
 @endsection

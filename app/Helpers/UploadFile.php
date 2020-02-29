@@ -15,7 +15,7 @@ class UploadFile
      * @param string $folder
      * @return false|string
      */
-    public static function upload(FormRequest $request, string $field, string $folder)
+    public static function uploadWithForm(FormRequest $request, string $field, string $folder)
     {
         $self = new self;
 
@@ -25,6 +25,22 @@ class UploadFile
 
             $filePath = $self->save($image, $folder, $name);
         }
+
+        return $filePath ?? false;
+    }
+
+    /**
+     * @param UploadedFile $image
+     * @param string $folder
+     * @return false|string
+     */
+    public static function upload(UploadedFile $image, string $folder)
+    {
+        $self = new self;
+
+        $name = explode(".", $image->getClientOriginalName(), 2)[0];
+        $filePath = $self->save($image, $folder, $name);
+
 
         return $filePath ?? false;
     }

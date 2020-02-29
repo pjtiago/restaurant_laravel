@@ -2,7 +2,6 @@
 
 namespace Modules\Restaurant\Http\Controllers;
 
-use App\Helpers\UploadFile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Modules\Restaurant\Http\Models\Category;
@@ -10,9 +9,9 @@ use Modules\Restaurant\Http\Requests\Categories\StoreRequest;
 
 class CategoriesController extends Controller
 {
-    public function index(Category $model)
+    public function index()
     {
-        return view('restaurant::categories.index', ['categories' => $model->paginate(15)]);
+        return view('restaurant::categories.index', ['categories' => Category::with('visible')->paginate(15)]);
     }
 
     public function create()

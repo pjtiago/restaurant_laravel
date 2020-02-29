@@ -7,16 +7,20 @@
         @slot('title'){{ __('restaurant::lang.categories') }}@endslot
 
         @slot('columns')
-            <td>{{ __('id') }}</td>
-            <td>{{ __('name') }}</td>
-            <td>{{ __('visible') }}</td>
+            <td>{{ __('restaurant::lang.id') }}</td>
+            <td>{{ __('restaurant::lang.name') }}</td>
+            <td>{{ __('restaurant::lang.visible') }}</td>
         @endslot
         @slot('columnsValues')
             @foreach ($categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
-                    <td>{{ $category->visible }}</td>
+                    <td>
+                        <span class="badge badge-pill badge-lg
+{{ $category->visible->id === Modules\Restaurant\Http\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($category->visible->translation) }}
+                        </span>
+                    </td>
                     @component('components.tables.table-actions')
                         @slot('destroyRoute')
                             {{ route('restaurant.category.destroy', $category)}}
@@ -33,7 +37,7 @@
 
         @slot('createRoute')
             <a href="{{ route('restaurant.category.create') }}"
-               class="btn btn-sm btn-primary">{{ __('estaurant::lang.add_category') }}</a>
+               class="btn btn-sm btn-primary">{{ __('restaurant::lang.add_category') }}</a>
         @endslot
     @endcomponent
 @endsection

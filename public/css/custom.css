@@ -4,3 +4,7 @@
     margin-top: .25rem;
     color: #fb6340;
 }
+
+.custom-table-header td {
+    font-weight: bold !important;
+}

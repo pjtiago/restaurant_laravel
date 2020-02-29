@@ -3,7 +3,6 @@ namespace App\Helpers;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 
 class UploadFile
 {

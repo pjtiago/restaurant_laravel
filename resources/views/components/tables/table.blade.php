@@ -26,13 +26,13 @@
 
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                        <tr>
-                            {{$columns}}
-                        </tr>
+                        <thead class="thead-light custom-table-header">
+                            <tr>
+                                {{$columns}}
+                            </tr>
                         </thead>
                         <tbody>
-                        {{$columnsValues}}
+                            {{$columnsValues}}
                         </tbody>
                     </table>
                 </div>

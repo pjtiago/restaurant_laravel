@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBooleanOptionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('boolean_options', function (Blueprint $table) {
@@ -20,11 +15,6 @@ class CreateBooleanOptionsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('boolean_options');

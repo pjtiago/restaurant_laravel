@@ -5,11 +5,6 @@ use Illuminate\Support\Facades\DB;
 
 class SeedBooleanOptionsTable extends CustomMigration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         $data = [

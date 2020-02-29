@@ -1,14 +1,33 @@
 <?php
 
 return [
-    'start_date' => 'Start Date',
-    'email' => 'Email',
-    'create_reservation' => 'Create Reservation',
     'add_user' => 'Add User',
-    'reservation_information' => 'Reservation information',
+    'description' => 'Description',
+    'email' => 'Email',
+    'highlight' => 'Highlight',
+    'id' => 'ID',
     'name' => 'Name',
+    'no' => 'No',
+    'price' => 'Price',
     'phone' => 'Phone',
-    'add_category' => 'Add category',
+    'photo' => 'Photo',
+    'start_date' => 'Start Date',
+    'visible' => 'Visible',
+    'yes' => 'Yes',
+
+
+    //Category
+    'category' => 'Category',
     'categories' => 'Categories',
     'categories_management' => 'Categories Management',
+    'add_category' => 'Add category',
+
+    //Products
+    'products' => 'Products',
+    'products_management' => 'Products Management',
+    'add_product' => 'Add product',
+
+    //Reservation
+    'reservation_information' => 'Reservation information',
+    'create_reservation' => 'Create Reservation',
 ];

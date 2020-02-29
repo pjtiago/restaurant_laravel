@@ -13,15 +13,18 @@
 
 // define patterns
 use Modules\Restaurant\Http\Models\Category;
+use Modules\Restaurant\Http\Models\Product;
 use Modules\Restaurant\Http\Models\Reservation;
 use Modules\Restaurant\Http\Models\Table;
 
 Route::pattern('category', '[0-9]+');
+Route::pattern('product', '[0-9]+');
 Route::pattern('reservation', '[0-9]+');
 Route::pattern('table', '[0-9]+');
 
 // define models
 Route::model('category', Category::class);
+Route::model('product', Product::class);
 Route::model('reservation', Reservation::class);
 Route::model('table', Table::class);
 
@@ -43,6 +46,14 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/create', ['as' => 'restaurant.category.create', 'uses' => 'CategoriesController@create']);
                 Route::delete('{category}', ['as' => 'restaurant.category.destroy', 'uses' => 'CategoriesController@destroy']);
                 Route::get('{category}/edit', ['as' => 'restaurant.category.edit', 'uses' => 'CategoriesController@edit']);
+            });
+
+            Route::prefix('product')->group(function () {
+                Route::get('/', ['as' => 'restaurant.product.index', 'uses' => 'ProductsController@index']);
+                Route::post('/', ['as' => 'restaurant.product.store', 'uses' => 'ProductsController@store']);
+                Route::get('/create', ['as' => 'restaurant.product.create', 'uses' => 'ProductsController@create']);
+                Route::delete('{product}', ['as' => 'restaurant.product.destroy', 'uses' => 'ProductsController@destroy']);
+                Route::get('{product}/edit', ['as' => 'restaurant.product.edit', 'uses' => 'ProductsController@edit']);
             });
 
             Route::prefix('reservation')->group(function () {

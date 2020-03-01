@@ -1,7 +1,7 @@
 <div class="form-group{{ $errors->has($fieldName) ? ' has-danger' : '' }}">
     <label class="form-control-label" for="{{$fieldName}}">{{$name}}</label>
     <select class="form-control" name="{{$fieldName}}" id="select-{{$fieldName}}">
-        @component('components.forms.select-option',['options' => $options])
+        @component('components.forms.select-option', ['options' => $options, 'selected' => $selected ?? null])
         @endcomponent
     </select>
 

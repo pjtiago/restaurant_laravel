@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/', ['as' => 'restaurant.category.index', 'uses' => 'CategoriesController@index']);
                 Route::post('/', ['as' => 'restaurant.category.store', 'uses' => 'CategoriesController@store']);
                 Route::get('/create', ['as' => 'restaurant.category.create', 'uses' => 'CategoriesController@create']);
+                Route::put('{category}', ['as' => 'restaurant.category.update', 'uses' => 'CategoriesController@update']);
                 Route::delete('{category}', ['as' => 'restaurant.category.destroy', 'uses' => 'CategoriesController@destroy']);
                 Route::get('{category}/edit', ['as' => 'restaurant.category.edit', 'uses' => 'CategoriesController@edit']);
             });
@@ -52,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/', ['as' => 'restaurant.product.index', 'uses' => 'ProductsController@index']);
                 Route::post('/', ['as' => 'restaurant.product.store', 'uses' => 'ProductsController@store']);
                 Route::get('/create', ['as' => 'restaurant.product.create', 'uses' => 'ProductsController@create']);
+                Route::put('{product}', ['as' => 'restaurant.product.update', 'uses' => 'ProductsController@update']);
                 Route::delete('{product}', ['as' => 'restaurant.product.destroy', 'uses' => 'ProductsController@destroy']);
                 Route::get('{product}/edit', ['as' => 'restaurant.product.edit', 'uses' => 'ProductsController@edit']);
             });

@@ -1,12 +1,12 @@
 <?php
-namespace Modules\Restaurant\Builders\Product;
+namespace Modules\Restaurant\Services\Product;
 
 use App\Helpers\UploadFile;
 use Modules\Restaurant\Http\Models\Product;
 
 class Create
 {
-    public static function save(array $data)
+    public function save(array $data)
     {
         Product::create([
             'name' => $data['name'],

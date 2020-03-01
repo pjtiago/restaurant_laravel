@@ -5,7 +5,7 @@
         id="{{$fieldName}}"
         name="{{$fieldName}}"
         rows="{{$rows}}"
-    >
+    >{{$oldValue}}
     </textarea>
 
     @if ($errors->has($fieldName))

@@ -9,6 +9,7 @@
         @slot('columns')
             <td>{{ __('restaurant::lang.id') }}</td>
             <td>{{ __('restaurant::lang.name') }}</td>
+            <td>{{ __('restaurant::lang.description') }}</td>
             <td>{{ __('restaurant::lang.visible') }}</td>
         @endslot
         @slot('columnsValues')
@@ -16,6 +17,7 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
+                    <td>{{ $category->description }}</td>
                     <td>
                         <span class="badge badge-pill badge-lg
 {{ $category->visible->id === Modules\Restaurant\Http\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($category->visible->translation) }}

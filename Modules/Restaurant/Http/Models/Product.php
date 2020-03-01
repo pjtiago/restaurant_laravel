@@ -16,6 +16,14 @@ class Product extends Model
         'fk_highlight'
     ];
 
+    public function getPhotoNameAttribute():string
+    {
+        $filePathArray = explode("/", $this->photo);
+        $fileIndex = count($filePathArray) - 1;
+
+        return $filePathArray[$fileIndex] ?? '';
+    }
+
     public function visible(){
         return $this->hasOne(BooleanOption::class, 'id', 'fk_visible');
     }

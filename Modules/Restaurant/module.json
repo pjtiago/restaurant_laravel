@@ -5,7 +5,8 @@
     "keywords": [],
     "order": 0,
     "providers": [
-        "Modules\\Restaurant\\Providers\\RestaurantServiceProvider"
+        "Modules\\Restaurant\\Providers\\RestaurantServiceProvider",
+        "Modules\\Restaurant\\Providers\\ServicesProvider"
     ],
     "aliases": {},
     "files": [],

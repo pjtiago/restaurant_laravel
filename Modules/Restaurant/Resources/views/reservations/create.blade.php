@@ -1,13 +1,6 @@
-@extends('layouts.app', ['title' => __('Create Reservation')])
+@extends('layouts.app', ['title' => __('restaurant::lang.create_reservation')])
 
-@section('custom_scripts')
-    <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $( ".datepicker" ).datepicker();
-        });
-    </script>
-@endsection
+
 
 @section('content')
     @include('users.partials.header', ['title' => __('Add User')])
@@ -19,29 +12,29 @@
         @slot('formEndpoint'){{route('restaurant.reservation.store')}}@endslot
         @slot('formFields')
             @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'name', 'type' => 'text'])
-                @slot('name'){{ __('Name') }}@endslot
+                @slot('name'){{ __('restaurant::lang.name') }}@endslot
                 @slot('oldValue'){{old('name')}}@endslot
             @endcomponent
 
             @component('components.forms.input-field',['errors' => $errors, 'fieldName' => 'email', 'type' => 'email'])
-                @slot('name'){{ __('Email') }}@endslot
+                @slot('name'){{ __('restaurant::lang.email') }}@endslot
                 @slot('oldValue'){{old('email')}}@endslot
             @endcomponent
 
             @component('components.forms.input-field', ['errors' => $errors, 'fieldName' => 'phone', 'type' => 'text'])
-                @slot('name'){{ __('phone') }}@endslot
+                @slot('name'){{ __('restaurant::lang.phone') }}@endslot
                 @slot('oldValue'){{old('phone')}}@endslot
             @endcomponent
 
-            <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
-                <label class="form-control-label" for="input-start-date-picker">{{ __('Start Date') }}</label>
-                <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                    </div>
-                    <input class="form-control datepicker" id="input-start-date-picker" placeholder="Select date" type="text" value="06/20/2020">
-                </div>
-            </div>
+            @component('components.forms.datepicker',['errors' => $errors, 'fieldName' => 'booking_date', 'type' => 'text'])
+                @slot('name'){{ __('restaurant::lang.date') }}@endslot
+                @slot('value'){{ date("d/m/Y",strtotime("+1 day")) }}@endslot
+                @slot('format'){{ "dd/mm/yyyy" }}@endslot
+                @slot('startDate'){{ date("d/m/Y",strtotime("+1 day")) }}@endslot
+                @slot('endDate'){{ date("d/m/Y",strtotime("+2 weeks")) }}@endslot
+                @slot('placeholder'){{ __('restaurant::lang.select_date') }}@endslot
+            @endcomponent
+
         @endslot
     @endcomponent
 @endsection

@@ -14,6 +14,8 @@ return [
     'start_date' => 'Start Date',
     'visible' => 'Visible',
     'yes' => 'Yes',
+    'select_date' => "Select date",
+    'date' => "Date",
 
 
     //Category
@@ -42,4 +44,5 @@ return [
     //Reservation
     'reservation_information' => 'Reservation information',
     'create_reservation' => 'Create Reservation',
+
 ];

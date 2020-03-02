@@ -5,7 +5,9 @@
             $( ".datepicker" ).datepicker({
                 format: '{{$format ?? ''}}',
                 startDate: '{{$startDate ?? ''}}',
-                endDate: '{{$endDate ?? ''}}'
+                endDate: '{{$endDate ?? ''}}',
+                daysOfWeekDisabled: '{{ $daysOfWeekDisabled }}',
+                datesDisabled: '{{ $datesDisabled }}'
             });
         });
     </script>

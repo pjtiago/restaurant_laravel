@@ -32,6 +32,8 @@
                 @slot('format'){{ "dd/mm/yyyy" }}@endslot
                 @slot('startDate'){{ date("d/m/Y",strtotime("+1 day")) }}@endslot
                 @slot('endDate'){{ date("d/m/Y",strtotime("+2 weeks")) }}@endslot
+                @slot('daysOfWeekDisabled'){{ "[1,2]" }}@endslot
+                @slot('datesDisabled'){{ "[12/03/2020,11/03/2020]" }}@endslot
                 @slot('placeholder'){{ __('restaurant::lang.select_date') }}@endslot
             @endcomponent
 

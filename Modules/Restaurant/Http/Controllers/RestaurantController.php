@@ -3,7 +3,9 @@
 namespace Modules\Restaurant\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\App;
 use Modules\Restaurant\Http\Models\Category;
+use Modules\Restaurant\Services\Restaurant\GetCategories;
 
 class RestaurantController extends Controller
 {
@@ -19,7 +21,9 @@ class RestaurantController extends Controller
 
     public function menu()
     {
-        return view('restaurant::client_template.menu', ['categories' => Category::with('visible', 'products')->paginate(15)]);
+        return view('restaurant::client_template.menu',
+            ['categories' => $this->getCategoriesService()->get()]
+        );
     }
 
     public function blog()
@@ -37,5 +41,10 @@ class RestaurantController extends Controller
     public function reservation()
     {
         return view('restaurant::client_template.reservation');
+    }
+
+    private function getCategoriesService(): GetCategories
+    {
+        return App::make('RestaurantGetCategoriesService');
     }
 }

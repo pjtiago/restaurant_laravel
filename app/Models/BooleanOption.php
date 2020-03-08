@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Restaurant\Http\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

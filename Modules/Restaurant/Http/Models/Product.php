@@ -2,6 +2,7 @@
 
 namespace Modules\Restaurant\Http\Models;
 
+use App\Models\BooleanOption;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

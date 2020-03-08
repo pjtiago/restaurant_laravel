@@ -2,12 +2,13 @@
 
 namespace Modules\Restaurant\Http\Controllers;
 
+use App\Models\BooleanOption;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Modules\Restaurant\Services\Product\Create as CreateProductService;
 use Modules\Restaurant\Services\Product\Update as UpdateProductService;
-use Modules\Restaurant\Http\Models\BooleanOption;
+
 use Modules\Restaurant\Http\Models\Category;
 use Modules\Restaurant\Http\Models\Product;
 use Modules\Restaurant\Http\Requests\Products\StoreRequest;

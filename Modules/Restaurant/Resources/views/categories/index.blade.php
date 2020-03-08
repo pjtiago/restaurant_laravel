@@ -20,7 +20,7 @@
                     <td>{{ $category->description }}</td>
                     <td>
                         <span class="badge badge-pill badge-lg
-{{ $category->visible->id === Modules\Restaurant\Http\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($category->visible->translation) }}
+{{ $category->visible->id === App\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($category->visible->translation) }}
                         </span>
                     </td>
                     @component('components.tables.table-actions')

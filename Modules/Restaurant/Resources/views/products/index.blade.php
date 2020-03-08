@@ -29,12 +29,12 @@
                     </td>
                     <td>
                         <span class="badge badge-pill badge-lg
-{{ $product->visible->id === Modules\Restaurant\Http\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($product->visible->translation) }}
+{{ $product->visible->id === App\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($product->visible->translation) }}
                         </span>
                     </td>
                     <td>
                         <span class="badge badge-pill badge-lg
-{{ $product->highlight->id === Modules\Restaurant\Http\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($product->highlight->translation) }}
+{{ $product->highlight->id === App\Models\BooleanOption::KEY_YES ? 'badge-success' : 'badge-danger'}}">{{ __($product->highlight->translation) }}
                         </span>
                     </td>
                     @component('components.tables.table-actions')

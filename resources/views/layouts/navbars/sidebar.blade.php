@@ -71,7 +71,7 @@
                     <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="{{ __('Search') }}" aria-label="Search">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <span class="fa fa-search"></span>
+                            <span class="fa fa-search"asdasda</span>
                         </div>
                     </div>
                 </div>
@@ -125,11 +125,13 @@
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
                 </li>
-                <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
+                @component('components.sidebar.item', ['route' => route('tag.index'), 'icon' => 'ni ni-circle-08 ', 'color' => 'pink', 'name' => __('tag_management')])
+                @endcomponent
+                {{--<li class="nav-item mb-5" style="position: absolute; bottom: 0;">
                     <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                         <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                     </a>
-                </li>
+                </li>--}}
             </ul>
             <!-- Divider -->
             <hr class="my-3">

@@ -3,7 +3,7 @@
         <div class="row mb-5">
             <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Feliciano</h2>
+                    <h2 class="ftco-heading-2">{{$company_name}}</h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                         live the blind texts.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">

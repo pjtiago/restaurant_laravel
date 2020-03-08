@@ -11,11 +11,11 @@ class Repository implements CategoryRepositoryContract, RestaurantServiceContrac
     public function getVisibleWithProducts(): Collection
     {
         return Category::with(self::RELATION_VISIBLE)
-                ->with([self::RELATION_PRODUCTS =>function($query) {
+                ->with([self::RELATION_PRODUCTS => function($query) {
                     $query->where('products.fk_visible', '=', self::VISIBLE_VALUE_YES);
                 }
             ])
-            ->where(''. self::FIELD_VISIBLE, '=', self::VISIBLE_VALUE_YES)
+            ->where(self::FIELD_VISIBLE, '=', self::VISIBLE_VALUE_YES)
             ->get();
     }
 }

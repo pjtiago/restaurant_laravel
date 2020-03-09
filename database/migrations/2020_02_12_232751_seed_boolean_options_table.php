@@ -9,14 +9,14 @@ class SeedBooleanOptionsTable extends CustomMigration
     {
         $data = [
             [
+                'id' => 0,
+                'name' => 'No',
+                'translation' => 'no',
+            ],
+            [
                 'id' => 1,
                 'name' => 'Yes',
                 'translation' => 'yes',
-            ],
-            [
-                'id' => 2,
-                'name' => 'No',
-                'translation' => 'no',
             ],
         ];
 

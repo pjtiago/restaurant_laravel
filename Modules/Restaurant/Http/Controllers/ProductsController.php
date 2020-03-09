@@ -25,7 +25,7 @@ class ProductsController extends Controller
     {
         return view('restaurant::products.create', [
             'categories' => Category::all(),
-            'boolean_options' => BooleanOption::all(),
+            'boolean_options' => BooleanOption::orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -43,7 +43,7 @@ class ProductsController extends Controller
         return view('restaurant::products.edit', [
             'categories' => Category::all(),
             'product' => $product,
-            'boolean_options' => BooleanOption::all(),
+            'boolean_options' => BooleanOption::orderBy('id', 'desc')->get(),
         ]);
     }
 

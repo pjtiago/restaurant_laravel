@@ -16,7 +16,6 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
 
             $table->foreign('fk_visible')->references('id')->on('boolean_options');
-
         });
     }
 

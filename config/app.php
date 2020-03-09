@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\ServicesProvider::class,
+
         LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::class,
         Nwidart\Modules\LaravelModulesServiceProvider::class,
     ],

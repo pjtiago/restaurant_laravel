@@ -16,7 +16,7 @@ class SeedProductsTable extends CustomMigration
                 'photo' => 'photo1',
                 'fk_category_id' => 1,
                 'fk_visible' => 1,
-                'fk_highlight' => 2,
+                'fk_highlight' => 0,
             ],
             [
                 'id' => 2,
@@ -26,7 +26,7 @@ class SeedProductsTable extends CustomMigration
                 'photo' => 'photo2',
                 'fk_category_id' => 1,
                 'fk_visible' => 1,
-                'fk_highlight' => 2,
+                'fk_highlight' => 0,
             ]
         ];
 

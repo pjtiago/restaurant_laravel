@@ -125,7 +125,7 @@
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
                 </li>
-                @component('components.sidebar.item', ['route' => route('tag.index'), 'icon' => 'ni ni-circle-08 ', 'color' => 'pink', 'name' => __('tag_management')])
+                @component('components.sidebar.item', ['route' => route('tag.index'), 'icon' => 'ni ni-tag', 'color' => 'yellow', 'name' => __('lang.tag_management')])
                 @endcomponent
                 {{--<li class="nav-item mb-5" style="position: absolute; bottom: 0;">
                     <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">

@@ -58,6 +58,15 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('{product}/edit', ['as' => 'restaurant.product.edit', 'uses' => 'ProductsController@edit']);
             });
 
+            Route::prefix('employees')->group(function () {
+                Route::get('/', ['as' => 'restaurant.employees.index', 'uses' => 'EmployeesController@index']);
+                Route::post('/', ['as' => 'restaurant.employees.store', 'uses' => 'EmployeesController@store']);
+                Route::get('/create', ['as' => 'restaurant.employees.create', 'uses' => 'EmployeesController@create']);
+                Route::put('{employees}', ['as' => 'restaurant.employees.update', 'uses' => 'EmployeesController@update']);
+                Route::delete('{employees}', ['as' => 'restaurant.employees.destroy', 'uses' => 'EmployeesController@destroy']);
+                Route::get('{employees}/edit', ['as' => 'restaurant.employees.edit', 'uses' => 'EmployeesController@edit']);
+            });
+
             Route::prefix('reservation')->group(function () {
                 Route::get('/', ['as' => 'restaurant.reservation.index', 'uses' => 'ReservationsController@index']);
                 Route::post('/', ['as' => 'restaurant.reservation.store', 'uses' => 'ReservationsController@store']);

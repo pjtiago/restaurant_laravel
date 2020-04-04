@@ -7,7 +7,7 @@ use App\Models\BooleanOption;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class Post extends Model
 {
     protected $table = 'posts';
     protected $fillable = ['content', 'fk_user', 'fk_post_category', 'fk_highlight', 'fk_visible'];
@@ -24,7 +24,7 @@ class Posts extends Model
         return $this->belongsTo(User::class, 'id', 'fk_user');
     }
 
-    public function PostCategory(){
+    public function postCategory(){
         return $this->belongsTo(PostCategory::class, 'fk_post_category', 'id');
     }
 }

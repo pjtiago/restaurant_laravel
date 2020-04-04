@@ -9,7 +9,7 @@
     </script>
 @endsection
 @section('content')
-    @include('users.partials.header', ['title' => __('Add User')])
+    @include('users.partials.header')
 
     @component('components.forms.form', ['formAction' => 'put'])
         @slot('title'){{ __('restaurant::lang.create_product') }}@endslot
